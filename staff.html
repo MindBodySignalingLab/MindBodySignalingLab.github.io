@@ -3,76 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mind-Body Signaling Lab | Staff</title>
-  <meta name="description" content="Team members and staff of the Mind-Body Signaling Lab.">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
+  <title>Members</title>
+  <!-- Alpine.js (defer) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- custom styles inlined for clarity – you can also keep as staff.css -->
+  <link rel="stylesheet" href="staff.css">
+
 </head>
 <body>
-  <div class="site-shell">
-    <header class="site-header">
-      <a class="brand" href="index.html">
-        <span class="brand-mark">MB</span>
-        <span class="brand-copy">
-          <strong>Mind-Body Signaling Lab</strong>
-          <span>University of California, Irvine</span>
-        </span>
-      </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span class="sr-only">Toggle navigation</span>
-      </button>
-      <nav class="site-nav" id="site-nav" aria-label="Primary">
-        <a href="index.html">Main</a>
-        <a href="director.html">Director</a>
-        <a class="is-active" href="staff.html">Staff</a>
-        <a href="research.html">Research</a>
-        <a href="tai-chi-qigong-classes.html">Tai Chi/Qigong Classes</a>
-        <a href="tools.html">Tools</a>
-      </nav>
-    </header>
+<div x-data="{ cards: [
+        { name: 'Sharon Shang 商子萱', city: '台北 -> 台北', highSchool: 'Kang Chiao International School', schoolAfterGraduate: 'UCSF (PharmD)', email: 'sharon1002candy@gmail.com'},
+        { name: 'Sylvia Liang 梁宇蕭', city: '綿陽 -> 綿陽', highSchool: 'Dongchen High School', schoolAfterGraduate: 'UPenn (Biotech master)', email: 'sylviaaall0@gmail.com'},
+        { name: 'Lily Chen 陳雨荷', city: '深圳 -> 湖南', highSchool: '', schoolAfterGraduate: '', email: ''},
+        { name: 'Helen Xu 徐曉藍', city: '佛山 -> 佛山', highSchool: 'Balboa High School', schoolAfterGraduate: '', email: 'Helenxu021026@gmail.com'},
+        { name: 'Annie Cao 曹穎仁', city: '無錫 -> 無錫', highSchool: 'Hawaii: Island Pacific Academy', schoolAfterGraduate: 'Alverno College (School of Nursing)', email: 'yingrencao03@gmail.com'},
+        { name: 'Sofia Zhang 張蘊琪', city: '北京 -> 常州', highSchool: 'The Affiliated High School of Peking University', schoolAfterGraduate: 'Harvard University (Human development and education)', email: 'sofiayunqizhang@gmail.com'},
+        { name: 'Kay Su 蘇東儒', city: '廣州 -> 廣州', highSchool: 'Portola High School (College in USC)', schoolAfterGraduate: '', email: 'kdsu@usc.edu'},
+        { name: 'Melinda Ly', city: 'El Monte -> 廣州, Rach Gia-Vietnam', highSchool: 'South El Monte High School', schoolAfterGraduate: 'N/A', email: 'melindawly16@gmail.com'},
+        { name: 'Jad Nehme', city: 'Glendora -> Damascus', highSchool: 'Glendora High School', schoolAfterGraduate: 'N/A', email: 'jadnehme115@gmail.com'},
+        { name: 'Oscar Chang 張冠晨', city: 'Johannesburg -> Johannesburg', highSchool: 'Dublin high School', schoolAfterGraduate: 'DiscComfort INC-Neurosurgery', email: 'oscarchang2385@gmail.com'},
+        { name: 'Kristina Yang 楊翔淇', city: '深圳 -> 陝西', highSchool: '', schoolAfterGraduate: '', email: ''},
+        { name: 'Shiloh Qiu 仇彥菲', city: '無錫 -> 無錫', highSchool: '', schoolAfterGraduate: '', email: ''},
+        { name: 'Deven Bhakta', city: 'Norwalk -> Norwalk', highSchool: 'Norwalk High', schoolAfterGraduate: 'N/A', email: 'd.a.bhakta12@gmail.com'},
+        { name: 'Nancy Yu 虞驍揚', city: '蘇州 -> 蘇州', highSchool: 'Suzhou Foreign Language School', schoolAfterGraduate: 'Johns Hopkins University (Biotechnology in Advanced Academic Programs)', email: 'nancyyxy1119@gmail.com'},
+        { name: 'Jett Sandoval', city: 'San Francisco -> Philippines', highSchool: 'Lowell High School', schoolAfterGraduate: 'N/A', email: 'Jett2110@gmail.com'},
+        { name: 'Shannon Stolaruk', city: 'Hungtinton Beach -> Hungtinton Beach', highSchool: '', schoolAfterGraduate: 'Concordia University of Nursing', email: 'smstolaruk@gmail.com'},
+        { name: 'Evan Kim', city: 'Anaheim -> Los Angeles', highSchool: 'Canyon High School', schoolAfterGraduate: '', email: 'evanhk@uci.edu'},
+        { name: 'Gena Younies', city: 'Garden Grove -> Syria, Egypt', highSchool: 'Fountain Vally Highschool, Orange Coast College', schoolAfterGraduate: '', email: 'younies.gena@gmail.com'},
+        { name: 'Michael Pirrello', city: 'Los Alamitos -> Los Angeles', highSchool: 'Los Alamitos High School', schoolAfterGraduate: '', email: 'mpirrello1414@gmail.com'},
+        { name: 'Kristen Ching Suarez 静美', city: 'Elk Grove -> Philippines', highSchool: 'Cosumnes Oaks High School', schoolAfterGraduate: '🤷', email: 'suarezkg@uci.edu'},
+        { name: 'Cherrie Chiang 江晨妤', city: 'Chino Hills -> 台灣', highSchool: 'Ruben S. Ayala High School', schoolAfterGraduate: '', email: 'chenyuc7@uci.edu'}
+      ]}">
+    <template x-for="card in cards" :key="card.email">
+      <div class="card">
+        <!-- name: english + chinese (as provided) -->
+        <div class="name-row">
+          <span class="name-zh" x-text="card.name"></span>
+        </div>
 
-    <main class="page-main">
-      <section class="page-hero">
-        <p class="eyebrow">People</p>
-        <h1>Staff</h1>
-        <p class="lead">A clean team directory with cards that can be swapped out for current lab personnel, students, coordinators, and collaborators.</p>
-      </section>
+        <!-- information in neat, minimal rows -->
+        <div class="detail-grid">
+          <!-- city -->
+          <div class="detail-item">
+            <span class="detail-label">City</span>
+            <span class="detail-value city" x-text="card.city"></span>
+          </div>
 
-      <section class="team-grid">
-        <article class="person-card">
-          <div class="avatar">AB</div>
-          <h2>Alex Brown</h2>
-          <p class="muted">Lab Manager</p>
-          <p>Coordinates day-to-day operations, participant scheduling, and cross-project logistics for active studies.</p>
-        </article>
-        <article class="person-card">
-          <div class="avatar">CL</div>
-          <h2>Casey Lin</h2>
-          <p class="muted">Research Specialist</p>
-          <p>Supports physiological data collection, protocol implementation, and quality assurance across lab workflows.</p>
-        </article>
-        <article class="person-card">
-          <div class="avatar">JM</div>
-          <h2>Jordan Martinez</h2>
-          <p class="muted">Graduate Researcher</p>
-          <p>Studies mechanisms linking mind-body practice with stress regulation, resilience, and measurable changes in health markers.</p>
-        </article>
-        <article class="person-card">
-          <div class="avatar">SP</div>
-          <h2>Sam Patel</h2>
-          <p class="muted">Community Programs Coordinator</p>
-          <p>Helps organize outreach, class communication, and participant engagement for public-facing lab programs.</p>
-        </article>
-      </section>
-    </main>
+          <!-- school after graduate (mapped from schoolAfterGraduate) -->
+          <div class="detail-item">
+            <span class="detail-label">School After Graduate</span>
+            <span class="detail-value school" x-text="card.schoolAfterGraduate"></span>
+          </div>
 
-    <footer class="site-footer">
-      <p>Mind-Body Signaling Lab Template</p>
-      <p>Staff directory page.</p>
-    </footer>
+          <!-- Email -->
+          <div class="detail-item">
+            <span class="detail-label">Email</span>
+            <span class="detail-value contact" x-text="card.email"></span>
+          </div>
+        </div>
+      </div>
+    </template>
   </div>
 </body>
 </html>

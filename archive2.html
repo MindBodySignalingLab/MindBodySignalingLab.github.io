@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mind-Body Signaling · Yin-Yang Lab</title>
+  <meta name="description" content="Laboratory of Mind-Body Signaling — integrating yin-yang, tai chi, and biomedical science.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f7f5f0;  /* soft rice paper */
+      color: #1e1e2a;
+      line-height: 1.5;
+    }
+
+    .site-shell {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 2rem;
+    }
+
+    /* ----- header & brand ----- */
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      border-bottom: 2px solid #d9d0c0;
+      padding-bottom: 0.75rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: #1e1e2a;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      background: radial-gradient(circle at 35% 35%, #f2e8d5, #b8aa92);
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #2a251e;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+      position: relative;
+    }
+    /* yin-yang dot inside brand mark */
+    .brand-mark::after {
+      content: "☯";
+      font-size: 2rem;
+      line-height: 1;
+      opacity: 0.3;
+      position: absolute;
+      right: -6px;
+      bottom: -6px;
+      transform: rotate(15deg);
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .brand-copy strong {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+    .brand-copy span {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #5f5543;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid #cbc0b0;
+      border-radius: 30px;
+      padding: 0.5rem 0.8rem;
+      cursor: pointer;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      margin: 5px 0;
+      background: #2a251e;
+      border-radius: 4px;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+
+    .site-nav {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+      font-weight: 500;
+    }
+    .site-nav a {
+      text-decoration: none;
+      color: #2f2a22;
+      font-size: 0.95rem;
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.15s;
+    }
+    .site-nav a.is-active,
+    .site-nav a:hover {
+      border-bottom-color: #7f6b54;
+      color: #0f0c08;
+    }
+
+    /* ----- hero section (yin-yang gradient) ----- */
+    .hero {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2.5rem;
+      background: linear-gradient(145deg, #e7dfd2 0%, #d6cdbb 100%);
+      border-radius: 48px 48px 48px 48px;
+      padding: 2.8rem 3rem;
+      margin-bottom: 3rem;
+      box-shadow: inset 0 1px 4px rgba(255, 245, 230, 0.6), 0 12px 28px rgba(60, 45, 30, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    /* tai chi / yin-yang wave overlay */
+    .hero::before {
+      content: "☯";
+      position: absolute;
+      right: -20px;
+      top: -30px;
+      font-size: 14rem;
+      opacity: 0.07;
+      transform: rotate(25deg);
+      color: #3d3529;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      background: radial-gradient(ellipse at 70% 100%, rgba(180, 160, 130, 0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #4f4233;
+      background: rgba(235, 220, 200, 0.5);
+      display: inline-block;
+      padding: 0.2rem 1.2rem;
+      border-radius: 40px;
+      backdrop-filter: blur(2px);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero-copy h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: #1e1a12;
+      max-width: 12ch;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 2px 4px rgba(255, 235, 200, 0.2);
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      max-width: 50ch;
+      color: #2f291f;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.7rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.15s;
+      border: 1px solid transparent;
+    }
+    .button-primary {
+      background: #2e2a22;
+      color: #f2ede4;
+      box-shadow: 0 4px 10px rgba(40, 30, 20, 0.2);
+    }
+    .button-primary:hover {
+      background: #1b1712;
+      transform: translateY(-2px);
+    }
+    .button-secondary {
+      background: rgba(235, 220, 200, 0.5);
+      backdrop-filter: blur(4px);
+      color: #1e1a12;
+      border-color: #b8a48c;
+    }
+    .button-secondary:hover {
+      background: rgba(215, 195, 170, 0.7);
+    }
+
+    .hero-panel {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+    }
+
+    .stat-card {
+      background: rgba(245, 237, 224, 0.7);
+      backdrop-filter: blur(4px);
+      padding: 1.8rem 1.8rem;
+      border-radius: 40px;
+      box-shadow: 0 8px 20px rgba(60, 45, 30, 0.08);
+      border: 1px solid rgba(210, 190, 165, 0.3);
+      width: 100%;
+    }
+    .stat-label {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #5b4d3a;
+      margin-bottom: 0.75rem;
+    }
+    .stat-card strong {
+      display: block;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.25rem 0;
+      border-bottom: 1px dashed #c8b8a4;
+    }
+    .stat-card strong:last-of-type {
+      border-bottom: none;
+    }
+
+    /* ----- content grid (yin-yang accent) ----- */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin: 3rem 0 2.8rem;
+    }
+
+    .card {
+      background: #fcf9f4;
+      padding: 2rem 2rem 2.5rem;
+      border-radius: 40px;
+      box-shadow: 0 6px 18px rgba(80, 60, 40, 0.04);
+      border: 1px solid #e4dbce;
+      position: relative;
+      transition: 0.2s;
+    }
+    .card:hover {
+      border-color: #cbb8a2;
+      box-shadow: 0 12px 28px rgba(70, 50, 30, 0.06);
+    }
+    /* tai chi swirl accent */
+    .card::after {
+      content: "☯";
+      position: absolute;
+      bottom: 1rem;
+      right: 1.5rem;
+      font-size: 3rem;
+      opacity: 0.08;
+      color: #5f5543;
+      transform: rotate(10deg);
+      pointer-events: none;
+    }
+
+    .card h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      color: #23201a;
+      display: inline-block;
+      border-bottom: 3px solid #dacfc0;
+      padding-bottom: 0.3rem;
+    }
+    .card p {
+      color: #2f2a22;
+      margin: 1rem 0;
+    }
+
+    /* ----- highlight band (tai chi / yin-yang gradient) ----- */
+    .highlight-band {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 2.5rem 0 3rem;
+      background: linear-gradient(135deg, #dcd0be 0%, #c9bbaa 100%);
+      border-radius: 60px;
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .highlight-band::before {
+      content: "☯";
+      position: absolute;
+      left: -10px;
+      bottom: -30px;
+      font-size: 10rem;
+      opacity: 0.1;
+      transform: rotate(-20deg);
+      color: #2f2a1e;
+    }
+    .highlight-band::after {
+      content: "⚡";
+      position: absolute;
+      right: 20px;
+      top: -10px;
+      font-size: 5rem;
+      opacity: 0.08;
+      transform: rotate(30deg);
+    }
+
+    .highlight-card {
+      background: rgba(245, 235, 220, 0.4);
+      backdrop-filter: blur(4px);
+      padding: 1.8rem 1.8rem;
+      border-radius: 40px;
+      border: 1px solid rgba(200, 180, 155, 0.3);
+      box-shadow: 0 2px 10px rgba(60, 45, 30, 0.04);
+      position: relative;
+      z-index: 2;
+    }
+    .highlight-card h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #1b1712;
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .highlight-card h2::before {
+      content: "◈";
+      font-size: 1rem;
+      opacity: 0.6;
+    }
+    .highlight-card p {
+      color: #2b241c;
+      font-size: 0.95rem;
+    }
+
+    /* ----- footer ----- */
+    .site-footer {
+      margin-top: 3.5rem;
+      border-top: 1px solid #dbd0c0;
+      padding-top: 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: #5f5543;
+    }
+
+    /* ----- responsive ----- */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.8rem;
+      }
+      .hero-copy h1 {
+        font-size: 2.2rem;
+        max-width: 100%;
+      }
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+      .highlight-band {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .site-shell {
+        padding: 1rem;
+      }
+      .site-nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+        padding-top: 1rem;
+      }
+      .site-nav.open {
+        display: flex;
+      }
+      .nav-toggle {
+        display: block;
+      }
+      .brand-copy strong {
+        font-size: 1rem;
+      }
+      .brand-mark {
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
+      }
+      .stat-card {
+        padding: 1.2rem;
+      }
+      .hero-copy h1 {
+        font-size: 1.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        border-radius: 28px;
+        padding: 1.5rem;
+      }
+      .button {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.85rem;
+      }
+      .highlight-card {
+        padding: 1.2rem;
+      }
+      .card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="site-shell">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">MB</span>
+      <span class="brand-copy">
+        <strong>Mind-Body Signaling Lab</strong>
+        <span>University of California, Irvine</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+      <span class="sr-only">Toggle navigation</span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <a class="is-active" href="index.html">Main</a>
+      <a href="director.html">Director</a>
+      <a href="staff.html">Staff</a>
+      <a href="research.html">Research</a>
+      <a href="tai-chi-qigong-classes.html">Tai Chi/Qigong</a>
+      <a href="tools.html">Tools</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- hero with yin-yang / tai chi vibe -->
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">☯ mind-body science · healing · translational research</p>
+        <h1>The Laboratory for Mind-Body Signaling and Energy Research</h1>
+        <p class="lead">
+          Our lab explores how complementary therapies — including Tai Chi, Qigong, and energy practices — shape physiology, recovery, and whole-person health through rigorous biomedical measurement.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="research.html">Explore research</a>
+          <a class="button button-secondary" href="tools.html">Open lab tools</a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="stat-card">
+          <span class="stat-label">Affiliations</span>
+          <strong>Developmental &amp; Cell Biology</strong>
+          <strong>Biomedical Engineering</strong>
+          <strong>Susan Samueli Center for Integrative Medicine</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- two cards with yin-yang accent -->
+    <div class="content-grid">
+      <article class="card">
+        <h2>About the lab</h2>
+        <p>
+          The Laboratory for Mind-Body Signaling and Energy Research is affiliated with the Department of Developmental &amp; Cell Biology, the Department of Biomedical Engineering, and the Susan Samueli Center for Integrative Medicine at the University of California, Irvine.
+        </p>
+        <p>
+          Our research involves an extensive collection of biomedical technologies to study changes in physiological and bioenergy markers associated with complementary and alternative therapies — always with a holistic yin-yang perspective.
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>Current focus</h2>
+        <p>
+          We study the effects of Qigong and Tai Chi and compare those effects with physical exercise, heat treatment, massage therapy, acupuncture, and topical herbal medicine.
+        </p>
+        <p>
+          The goal is to accelerate the integration of evidence-based complementary approaches with Western medicine to enhance healing, resilience, and overall wellbeing — balancing the dynamic forces of yin and yang.
+        </p>
+      </article>
+    </div>
+
+    <!-- highlight band with tai chi / yin-yang gradient -->
+    <section class="highlight-band">
+      <div class="highlight-card">
+        <h2>What we do</h2>
+        <p>We combine mind-body practice, physiology, engineering, and clinical collaboration to better understand how subtle interventions — like Tai Chi and Qigong — influence health outcomes.</p>
+      </div>
+      <div class="highlight-card">
+        <h2>Who we serve</h2>
+        <p>Our work supports researchers, clinicians, students, and community participants interested in integrative medicine and measurable pathways of healing.</p>
+      </div>
+      <div class="highlight-card">
+        <h2>How to engage</h2>
+        <p>Browse our research themes, meet the team, explore digital tools, or use this template as the starting point for your updated public-facing lab presence.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>☯ Mind-Body Signaling Lab · Yin-Yang &amp; Tai Chi inspired</p>
+    <p>Built for responsive viewing · UCI</p>
+  </footer>
+</div>
+
+<!-- tiny nav toggle script -->
+<script>
+  (function() {
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('site-nav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', function() {
+        const expanded = this.getAttribute('aria-expanded') === 'true' ? false : true;
+        this.setAttribute('aria-expanded', expanded);
+        nav.classList.toggle('open');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

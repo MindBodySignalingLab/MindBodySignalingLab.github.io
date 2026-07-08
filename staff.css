@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f8faff;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    padding: 2rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* main grid container – matches Alpine x-data root */
+div[x-data] {
+    max-width: 1400px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.75rem;
+    align-items: start;
+}
+
+/* ===== card ===== */
+.card {
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 1.75rem 1.5rem 1.5rem;
+    box-shadow: 0 8px 28px rgba(0, 20, 40, 0.06), 0 2px 8px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s ease;
+    border: 1px solid rgba(210, 222, 242, 0.4);
+    backdrop-filter: blur(1px);
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px -8px rgba(18, 30, 60, 0.10), 0 6px 14px rgba(0, 0, 0, 0.02);
+    border-color: #cbd9f0;
+}
+
+/* ----- name row (english + chinese) ----- */
+.name-row {
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid #eef3fc;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.5rem;
+}
+
+.name-zh {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #0b1e3a;
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+/* if we wanted to add a subtle label for 'name' – but we keep it clean */
+.name-zh::before {
+    content: "✦ ";
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #7b93b5;
+    opacity: 0.7;
+}
+
+/* ----- detail grid (minimal rows) ----- */
+.detail-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    margin-top: 0.1rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.4;
+    padding: 0.1rem 0;
+}
+
+.detail-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    color: #5f7a9e;
+    margin-bottom: 0.15rem;
+    opacity: 0.7;
+}
+
+.detail-value {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #132c4a;
+    word-break: break-word;
+}
+
+/* city gets a subtle icon feel */
+.detail-value.city {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+.detail-value.city::before {
+    content: "📍";
+    font-size: 0.9rem;
+    opacity: 0.6;
+    margin-right: 0.2rem;
+}
+
+/* school after graduate */
+.detail-value.school {
+    font-weight: 450;
+    color: #1e3a5f;
+}
+
+/* email – contact style */
+.detail-value.contact {
+    font-size: 0.85rem;
+    font-weight: 450;
+    color: #2563a0;
+    word-break: break-all;
+    transition: color 0.1s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+.detail-value.contact::before {
+    content: "✉️";
+    font-size: 0.8rem;
+    opacity: 0.5;
+    margin-right: 0.1rem;
+}
+.detail-value.contact:hover {
+    color: #0a4b7a;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1.5px;
+    text-decoration-color: #b3cce5;
+}
+
+/* if any detail-value is empty, we still show a faint placeholder? 
+    but we keep as is – optional: if empty show "—" for clarity */
+.detail-value:empty::after {
+    content: "—";
+    opacity: 0.35;
+    font-weight: 300;
+    color: #5d7da0;
+}
+
+/* small spacing for cards with missing data – keep layout stable */
+.card .detail-grid .detail-item:last-child {
+    margin-bottom: 0;
+}
+
+/* adjust for very narrow screens */
+@media (max-width: 480px) {
+    body {
+    padding: 1.25rem 0.75rem;
+    }
+    div[x-data] {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    }
+    .card {
+    padding: 1.5rem 1.2rem;
+    }
+    .name-zh {
+    font-size: 1.2rem;
+    }
+    .detail-value {
+    font-size: 0.9rem;
+    }
+}
+
+/* optional: add a bit of style to the city arrow (台北 -> 台北) */
+.detail-value.city {
+    color: #1f3a5e;
+}
+
+/* make email clickable (but we keep it as plain text – optional) 
+    if you want to add mailto: you can later, but it's not required */
+.detail-value.contact {
+    cursor: default;
+}
+
+/* subtle highlight for the school row */
+.detail-item:nth-child(2) .detail-value.school {
+    font-weight: 490;
+    color: #0f2c4a;
+}
+
+/* if you want a small "email" label to be more visible */
+.detail-item:last-child .detail-label {
+    letter-spacing: 0.06em;
+}
+
+/* fine tune name: if name contains both english + chinese, show nicely */
+.name-zh {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.2rem 0.6rem;
+}
+/* no extra decoration – the name appears as given */
+.name-zh::before {
+    content: "";
+    display: none; /* remove the star – we want just the name */
+}
+/* add back a tiny accent instead: maybe a small dot? we keep it clean */
+.name-row {
+    border-bottom: 2px solid #e0eaf7;
+}
+
+/* if name is long, it wraps gracefully */
+.name-zh {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #0b1f3b;
+}
+/* for name that includes english and chinese, we keep as is */
