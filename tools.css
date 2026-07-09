@@ -1,0 +1,76 @@
+/* ─── tools.css: Tools page specific styles ─── */
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.tool-card {
+  display: block;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  text-decoration: none;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  border: 1px solid #e8edf2;
+}
+
+.tool-card:hover {
+  box-shadow: 0 8px 24px rgba(44, 110, 156, 0.12);
+  transform: translateY(-3px);
+}
+
+.tool-kicker {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: #2c6e9c;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.tool-card h2 {
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1a3a4a;
+  margin-bottom: 0.5rem;
+}
+
+.tool-card p {
+  font-size: 0.9rem;
+  color: #5a6a7a;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.tool-link {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #2c6e9c;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.tool-link::after {
+  content: "→";
+  transition: transform 0.2s ease;
+}
+
+.tool-card:hover .tool-link::after {
+  transform: translateX(4px);
+}
+
+@media (max-width: 480px) {
+  .tool-grid {
+    grid-template-columns: 1fr;
+  }
+  .tool-card {
+    padding: 1.25rem;
+  }
+}

@@ -1,0 +1,83 @@
+/* ─── courses.css: Courses page specific styles ─── */
+
+.course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.course-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  border-left: 4px solid #2c6e9c;
+  transition: box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+  box-shadow: 0 8px 24px rgba(44, 110, 156, 0.12);
+}
+
+.course-code {
+  display: inline-block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: #2c6e9c;
+  background: #e8f0f8;
+  padding: 0.2rem 0.7rem;
+  border-radius: 20px;
+  margin-bottom: 0.4rem;
+}
+
+.course-card h2 {
+  font-family: 'Georgia', serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #1a3a4a;
+  margin-bottom: 0.5rem;
+}
+
+.course-card p {
+  font-size: 0.95rem;
+  color: #4a5a6a;
+  margin-bottom: 0.4rem;
+  line-height: 1.5;
+}
+
+.course-card .course-time {
+  font-size: 0.85rem;
+  color: #5a6f82;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.course-card .course-register {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.4rem 1.2rem;
+  background: #2c6e9c;
+  color: #ffffff;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.course-card .course-register:hover {
+  background: #1a5a82;
+}
+
+@media (max-width: 480px) {
+  .course-card {
+    padding: 1.2rem 1.25rem;
+  }
+  .course-card h2 {
+    font-size: 1.05rem;
+  }
+}

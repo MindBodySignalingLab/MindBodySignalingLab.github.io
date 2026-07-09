@@ -1,0 +1,29 @@
+/* ─── research.css: Research page specific styles ─── */
+
+.research-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.research-grid .card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.research-grid .card p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 720px) {
+  .research-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .research-grid .card {
+    padding: 1.25rem;
+  }
+}

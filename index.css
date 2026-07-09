@@ -73,9 +73,6 @@ body {
 }
 
 /* Welcome Box */
-.welcome-box {
-}
-
 .welcome-content p {
   font-size: 1.05rem;
   margin-bottom: 14px;
@@ -84,10 +81,6 @@ body {
 
 .welcome-content p:last-child {
   margin-bottom: 0;
-}
-
-/* About Box */
-.about-box {
 }
 
 /* About Grid */
@@ -107,9 +100,10 @@ body {
   font-size: 1rem;
   color: #1a3a4a;
   transition: all 0.25s ease;
-  cursor: default;
   border: 1px solid transparent;
   letter-spacing: 0.3px;
+  text-decoration: none;
+  display: block;
 }
 
 .about-item:hover {

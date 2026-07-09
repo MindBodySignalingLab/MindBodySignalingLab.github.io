@@ -1,0 +1,289 @@
+/* ─── base.css: shared reset, navigation, footer, common utilities ─── */
+
+/* Reset & base */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  background: #f0f4f8;
+  color: #2c3e50;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Site shell (page wrapper) ─── */
+.site-shell {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Header & Brand ─── */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1.25rem 0 0.75rem;
+  border-bottom: 2px solid #dde4ec;
+  margin-bottom: 2rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: #1a2a3a;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #dce6f0, #b8cce0);
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #1a2a3a;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  font-family: 'Georgia', serif;
+}
+
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.brand-copy strong {
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+.brand-copy span {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: #5a6f82;
+  letter-spacing: 0.02em;
+}
+
+/* ─── Navigation ─── */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid #cbd6e2;
+  border-radius: 30px;
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin: 4px 0;
+  background: #2c3e50;
+  border-radius: 4px;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-weight: 500;
+  font-size: 0.92rem;
+}
+.site-nav a {
+  text-decoration: none;
+  color: #3a4a5a;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+.site-nav a.is-active,
+.site-nav a:hover {
+  border-bottom-color: #2c6e9c;
+  color: #1a2a3a;
+}
+
+/* ─── Page Hero ─── */
+.page-hero {
+  margin-bottom: 2.5rem;
+}
+.page-hero h1 {
+  font-family: 'Georgia', serif;
+  font-size: 2.4rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #1a2a3a;
+  margin-bottom: 0.5rem;
+}
+.page-hero .eyebrow {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #5a6f82;
+  margin-bottom: 0.3rem;
+}
+.page-hero .lead {
+  font-size: 1.05rem;
+  color: #4a5a6a;
+  max-width: 650px;
+}
+
+/* ─── Cards ─── */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.75rem 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.3s ease;
+}
+.card:hover {
+  box-shadow: 0 8px 24px rgba(44, 110, 156, 0.12);
+}
+.card h2 {
+  font-family: 'Georgia', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #1a3a4a;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e8edf2;
+}
+.card h3 {
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1a3a4a;
+  margin-bottom: 0.5rem;
+}
+.card p {
+  font-size: 1rem;
+  color: #3a4a5a;
+  margin-bottom: 0.75rem;
+}
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+/* ─── Buttons ─── */
+.button {
+  display: inline-block;
+  padding: 0.6rem 1.8rem;
+  border-radius: 30px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.button-primary {
+  background: #2c6e9c;
+  color: #ffffff;
+}
+.button-primary:hover {
+  background: #1a5a82;
+  box-shadow: 0 4px 12px rgba(44, 110, 156, 0.25);
+}
+.button-secondary {
+  background: transparent;
+  color: #2c6e9c;
+  border-color: #2c6e9c;
+}
+.button-secondary:hover {
+  background: #e8f0f8;
+}
+
+/* ─── Footer ─── */
+.site-footer {
+  margin-top: 3rem;
+  padding: 1.5rem 0;
+  border-top: 2px solid #dde4ec;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #5a6f82;
+}
+.site-footer strong {
+  color: #3a4a5a;
+  font-weight: 600;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 720px) {
+  .site-shell {
+    padding: 0 1rem;
+  }
+  .site-header {
+    padding: 1rem 0 0.5rem;
+  }
+  .site-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.4rem;
+    padding-top: 0.75rem;
+  }
+  .site-nav.open {
+    display: flex;
+  }
+  .nav-toggle {
+    display: block;
+  }
+  .page-hero h1 {
+    font-size: 1.8rem;
+  }
+  .card {
+    padding: 1.25rem 1.25rem;
+  }
+  .site-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-copy strong {
+    font-size: 1rem;
+  }
+  .brand-mark {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  .page-hero h1 {
+    font-size: 1.5rem;
+  }
+  .site-nav a {
+    font-size: 0.88rem;
+  }
+  .button {
+    padding: 0.5rem 1.4rem;
+    font-size: 0.85rem;
+  }
+}

@@ -1,0 +1,106 @@
+/* ─── director.css: Director page specific styles ─── */
+
+.director-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.director-main {
+  grid-column: 1 / -1;
+}
+
+.director-main h2 {
+  font-family: 'Georgia', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #1a3a4a;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e8edf2;
+}
+
+.director-main p {
+  font-size: 1rem;
+  color: #3a4a5a;
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+}
+
+.director-main p:last-child {
+  margin-bottom: 0;
+}
+
+.director-sidebar h2,
+.director-bio h2,
+.director-research h2 {
+  font-family: 'Georgia', serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #1a3a4a;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid #e8edf2;
+}
+
+.focus-list,
+.affiliation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.focus-list li,
+.affiliation-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eef3fc;
+  font-size: 0.95rem;
+  color: #3a4a5a;
+  line-height: 1.5;
+}
+
+.focus-list li:last-child,
+.affiliation-list li:last-child {
+  border-bottom: none;
+}
+
+.focus-list li::before {
+  content: "▸ ";
+  color: #2c6e9c;
+  font-weight: 600;
+}
+
+.affiliation-list li strong {
+  color: #1a2a3a;
+}
+
+.director-research p {
+  font-size: 0.95rem;
+  color: #3a4a5a;
+  margin-bottom: 0.7rem;
+  line-height: 1.6;
+}
+
+.director-research p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 720px) {
+  .director-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .director-main,
+  .director-sidebar,
+  .director-bio,
+  .director-research {
+    padding: 1.25rem;
+  }
+  .focus-list li,
+  .affiliation-list li {
+    font-size: 0.9rem;
+  }
+}
